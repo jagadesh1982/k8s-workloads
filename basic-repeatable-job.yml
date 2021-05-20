@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: single-job
+spec:
+  completions: 3 # number of times to run 
+  backoffLimit: 6 # number of retries before throwing error
+  activeDeadlineSeconds: 10 # time to allow job to run
+  template:
+    metadata:
+      labels:
+        env: dev
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: testing-job
+          image: centos:7
+          command:
+            - "bin/bash"
+            - "-c"
+            - "for i in 9 8 7 6 5 4 3 2 1 ; do echo $i ; done"
+      restartPolicy: Never
+
