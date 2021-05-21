@@ -11,10 +11,11 @@ spec:
     ports:
      - containerPort: 9876 
     volumeMounts:
-       - mountPath: /data-mount
-         name: data
+     - name: test-nfs
+       mountPath: /demo 
   volumes:
-    - name: data
-      gitRepo:
-        repository: https://github.com/jagadesh1982/SampleTest.git
-        directory: .
+   - name: test-nfs
+     awsElasticBlockStore:
+       volumeID: vol-01997322a2a934cf0
+       fsType: ext4
+
