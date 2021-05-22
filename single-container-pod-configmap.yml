@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: secret-pod
+  name: configmap-pod
   labels:
    env: dev
 spec:
@@ -11,15 +11,16 @@ spec:
     ports:
      - containerPort: 80
     volumeMounts:
-     - name: apikeyvol
+     - name: configmap
        mountPath: "/tmp/apikey"
        readOnly: true
   volumes:
-     - name: apikeyvol
+     - name: configmap
        configMap:
-        - key: config
-          path: example-configmap
-
+        name: example-configmap
+        items: 
+         - key: config
+           path: example-map
 
 
 #echo 'admin' | base64
