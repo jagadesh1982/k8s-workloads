@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: testing-service
+  labels:
+    env: dev
+    tier: backend
+spec:
+  replicas: 3
+  selector:
+   matchLabels:
+    app: test-service
+    env: dev
+    version: "1"
+  template:
+    metadata:
+      labels:
+        app: test-service
+        env: dev
+        version: "1"
+    spec:
+      containers:
+        - name: test-service
+          image: "docker.io/jagadesh1982/testing-service"
+          ports:
+           - containerPort: 9876
