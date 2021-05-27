@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-dm
+  labels:
+    app: testing-service
+spec:
+  replicas: 6
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: example-dm
+      env: dev
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: example-dm
+        env: dev
+        tier: backend
+    spec:
+      containers:
+       - name: testing-service
+         image: docker.io/jagadesh1982/testing-service:latest
+         ports:
+          - containerPort: 9876 
+         env:
+          - name: VERSION
+            value: "3.0"
+          - name: FRUIT
+            value: "apple"

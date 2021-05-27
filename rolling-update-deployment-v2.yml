@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-dm
+  labels:
+    app: testing-service
+spec:
+  replicas: 10
+  strategy:
+     type: RollingUpdate
+     rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: example-dm
+      env: dev
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: example-dm
+        env: dev
+        tier: backend
+    spec:
+      containers:
+       - name: test-service
+         image: docker.io/jagadesh1982/testing-service:latest
+         ports:
+          - containerPort: 9876 
+         env:
+          - name: VERSION
+            value: "2.0"
+          - name: FRUIT
+            value: "grape"
