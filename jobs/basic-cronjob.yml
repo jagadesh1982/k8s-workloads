@@ -1,9 +1,10 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: cron-service
+  name: cron-job
 spec:
   schedule: "*/1 * * * *"
+  startingDeadlineSeconds: 100
   jobTemplate:
     spec:
       template:
@@ -16,3 +17,16 @@ spec:
                  - "-c"
                  - "for i in 3 2 1 ; do echo $i ; done"
           restartPolicy: OnFailure
+          
+         
+# All CronJob times are in UTC. There are five fields, separated by spaces. These fields represent the following:
+# schedule: "*/1 * * * *"
+# Minutes (between 0 and 59)
+# Hours (between 0 and 23)
+# Day of the month (between 1 and 31)
+# Month (between 1 and 12)
+# Day of the week (between 0 and 6 starting on Sunday)
+         
+# startingDeadlineSeconds: 100 - The optional startingDeadlineSeconds field indicates the maximum number of seconds the CronJob can take to start if it misses its scheduled time for any reason. Missed CronJobs are considered failures.
+
+          
