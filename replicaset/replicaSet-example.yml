@@ -24,3 +24,21 @@ spec:
           image: "docker.io/jagadesh1982/testing-service"
           ports:
            - containerPort: 9876
+
+
+# Edit the Rs : kubectl edit rs testing-service
+# Edit the original Text file , save it and then replace as [root@ec2-3-138-100-101 ec2-user]# kubectl replace -f rs-example.yml
+
+# The only difference between replica set and replication controller is the selector types.The replication controller supports equality based selectors
+#whereas the replica set supports equality based as well as set based selectors.
+
+#Equality based Selectors : Three operators used in set based equality based selectors are = , == , !=. The first two represent equality (and are simply synonyms), while the latter represents inequality. 
+#[root@ec2-3-138-100-101 ec2-user]# kubectl  get pods -l "env=dev"
+
+#Set Based Selectors : Unlike Equality based, Set-based label selectors allow filtering keys according to a set of values. Three kinds of operators used in set-based selectors are in , notin, exists(only the key identifier).
+#For example, if we provide the following selectors:
+#env in (prod, qa)
+#tier notin (frontend, backend)
+
+#[root@ec2-3-138-100-101 ec2-user]# kubectl  get pods -l "env in (dev,qa)"
+
