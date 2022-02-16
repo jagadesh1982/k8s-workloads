@@ -28,6 +28,8 @@ spec:
 
 # Edit the Rs : kubectl edit rs testing-service
 # Edit the original Text file , save it and then replace as [root@ec2-3-138-100-101 ec2-user]# kubectl replace -f rs-example.yml
+# [root@ec2-3-138-100-101 ec2-user]# kubectl scale --replicas=1 -f  rs-example.yml 
+# [root@ec2-3-138-100-101 ec2-user]# kubectl scale - -replicas= 5 replicaset rs
 
 # The only difference between replica set and replication controller is the selector types.The replication controller supports equality based selectors
 #whereas the replica set supports equality based as well as set based selectors.
