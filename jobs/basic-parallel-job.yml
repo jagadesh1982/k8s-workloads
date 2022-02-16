@@ -22,4 +22,21 @@ spec:
 
 # Managing parallelism : By default, Job Pods do not run in parallel. The optional parallelism field specifies the maximum desired number of Pods a Job should 
 # run concurrently at any given time. The actual number of Pods running in a steady state might be less than the parallelism value if the remaining work is 
-# less than the parallelism value. If you have also set completions, the actual number of Pods running in parallel does not exceed the number of remaining completions. A Job may throttle Pod creation in response to excessive Pod creation failure.
+# less than the parallelism value. If you have also set completions, the actual number of Pods running in parallel does not exceed the number of remaining 
+# completions. A Job may throttle Pod creation in response to excessive Pod creation failure.
+
+#The default value of parallelism is 1 if the field if omitted or unless set otherwise. If the value is set to 0, the Job is paused until the value is increased.
+
+
+# backOffLimit : By default, a Job runs uninterrupted unless there is a failure, at which point the Job defers to the backoffLimit. 
+# The backoffLimit field specifies the number of retries before marking the job as failed; the default value is 6. The number of retries applies per Pod,
+# not globally. This means that if multiple Pods fail (when parallelism is greater than 1), the job continues to run until a single Pod fails backoffLimit of 
+# times. Once the backoffLimit has been reached, the Job is marked as failed and any running Pods will be terminated.
+
+
+
+# Specifying a deadline : By default, a Job creates new Pods forever if its Pods fail continuously. If you prefer not to have a Job retry forever, 
+# you can specify a deadline value using the optional .spec.activeDeadlineSeconds field of the Job.A deadline grants a Job a specific amount of time, in seconds,
+# to complete its tasks successfully before terminating. The activeDeadlineSeconds value is relative to the startTime of the Job, and applies to the duration
+# of the Job, no matter how many Pods are created. To specify a deadline, add the activeDeadlineSeconds value to the Job's spec field in the manifest file. 
+# For example, the following configuration specifies that the Job has 100 seconds to complete successfully
