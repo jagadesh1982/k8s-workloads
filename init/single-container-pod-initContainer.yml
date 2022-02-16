@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: single-pod-init-container
+  name: pod-init-container
   labels:
     env: dev
 spec:
@@ -11,10 +11,17 @@ spec:
     ports:
      - containerPort: 9876 
   initContainers:
-    - name: counter
-      image: centos:7
+    - name: sleepy
+      image: alpine
       imagePullPolicy: IfNotPresent
+      command: ['sleep', '20']
+    - name: counter
+      image: alpine
       command:
-        - "bin/bash"
+        - "bin/sh"
         - "-c"
-        - "for i in 9 8 7 6 5 4 3 2 1 ; do echo $i ; done"   
+        - "for i in 9 8 7 6 5 4 3 2 1 ; do echo $i ; done" 
+        
+        
+        
+   
