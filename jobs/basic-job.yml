@@ -10,7 +10,6 @@ spec:
       labels:
         env: dev
     spec:
-      restartPolicy: OnFailure
       containers:
         - name: testing-job
           image: centos:7
@@ -18,6 +17,7 @@ spec:
             - "bin/bash"
             - "-c"
             - "for i in 9 8 7 6 5 4 3 2 1 ; do echo $i ; done"
+      # Do not restart containers after they exit      
       restartPolicy: Never
 
 
