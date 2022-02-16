@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: single-pod
+  name: pod-lifecycle
   labels:
     env: dev
 spec:
@@ -19,3 +19,5 @@ spec:
             command: ["/bin/sh", "-c", "echo Hello from the preSop handler > /tmp/hello"]
 
    
+# execcute the Pod creation in one terminal
+# in second terminal , tail the logs of the pods as "kubectl exec single-pod -- tail -f /tmp/hello"
