@@ -2,3 +2,10 @@ apiVersion: v1
 kind: Namespace
 metadata:
  name: development
+ 
+ 
+ 
+#[root@ec2-3-138-100-101 ec2-user]# kubectl  get ns
+#[root@ec2-3-138-100-101 ec2-user]# kubectl describe ns dev
+#[root@ec2-3-138-100-101 ec2-user]# kubectl get ns app -o yaml
+
