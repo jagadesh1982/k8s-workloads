@@ -11,7 +11,6 @@ spec:
       labels:
         env: dev
     spec:
-      restartPolicy: OnFailure
       containers:
         - name: testing-job
           image: centos:7
@@ -21,3 +20,8 @@ spec:
             - "for i in 9 8 7 6 5 4 3 2 1 ; do echo $i ; done"
       restartPolicy: Never
 
+
+# Job completion count :A Job is completed when a specific number of Pods terminate successfully. By default, a non-parallel Job with a single Pod completes 
+# as soon as the Pod terminates successfully. If you have a parallel Job, you can set a completion count using the optional completions field. 
+# This field specifies how many Pods should terminate successfully before the Job is complete. The completions field accepts a non-zero, positive value.Omitting 
+# completions or specifying a zero value causes the success of any Pod to signal the success of all Pods.
