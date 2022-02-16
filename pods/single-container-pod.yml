@@ -10,3 +10,24 @@ spec:
     image: docker.io/jagadesh1982/testing-service:latest
     ports:
      - containerPort: 9876  
+
+
+
+# kubectl create deployment my-app --image=nginx --replicas=2 -n dev
+# kubectl create deployment my-app --image=nginx --replicas=2 --namespace dev
+
+
+# Create a Nginx Pod
+# kubectl run nginx --image=nginx
+# kubectl run nginx --image=nginx --port=8080
+# kubectl run nginx --image=nginx --env="DNS_DOMAIN=cluster" --env="POD_NAMESPACE=default"
+# kubectl run nginx --image=nginx --labels="app=hazelcast,env=prod"
+# Dry run : kubectl run nginx --image=nginx --dry-run=client
+
+# Execute a COmmand in Pod : kubectl exec nginx -- ls /
+# Connect to a Pod : [root@ec2-3-138-100-101 ec2-user]# kubectl exec --stdin --tty nginx -- /bin/sh  
+
+# kubectl cp simple-ns.yml nginx:/tmp
+# kubectl exec nginx -- ls /tmp
+# kubectl cp hai nginx:/tmp/bar -c nginx    
+# kubectl cp hai1 default/nginx:/tmp/bar 
