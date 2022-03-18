@@ -17,3 +17,20 @@ spec:
         command:
          - cat
          - /testing_service.py
+
+
+
+
+# Each type of probe has common configurable fields:
+# initialDelaySeconds: Probes start running after initialDelaySeconds after container is started (default: 0)
+# periodSeconds: How often probe should run (default: 10)
+# timeoutSeconds: Probe timeout (default: 1)
+# successThreshold: Required number of successful probes to mark container healthy/ready (default: 1)
+# failureThreshold: When a probe fails, it will try failureThreshold times before deeming unhealthy/not ready (default: 3)
+
+
+# Establish an HTTP request to the pod. The response should have anHTTP rresponse code ranging from 200 to 399. This way, 
+# 5xxand4xx codes signal that the pod is having issues although the process is running.
+
+# For pods that expose non-HTTP services (for example, Postfix mail server), the check is to establish a successful TCP connection.
+# Executing an arbitrary command against the pod (internally). The check is successful is the command exit code is 0.
