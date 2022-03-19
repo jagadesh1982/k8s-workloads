@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: single-pod
+  labels:
+    env: dev
+spec:
+  containers:
+  - name: testing-service
+    image: docker.io/jagadesh1982/testing-service:3
+    ports:
+     - containerPort: 9876 
+    env:
+      - name: VERSION
+        value: "1.0"
+      - name: FRUIT
+        value: "mango"
+      - name: SLEEP
+        value: "50"    
+    livenessProbe:
+      initialDelaySeconds: 2
+      periodSeconds: 5
+      httpGet:
+        path: /info
+        port: 9876
+    startupProbe:
+      httpGet:
+        path: /info
+        port: 9876
+      failureThreshold: 30
+      periodSeconds: 10
+
+
+# you have to deal with legacy applications that might require an additional startup time on their first initialization. In such cases, 
+# it can be tricky to set up liveness probe parameters without compromising the fast response to deadlocks that motivated such a probe. 
+# The trick is to set up a startup probe with the same command, HTTP or TCP check, with a failureThreshold * periodSeconds long enough
+
+# In the above code, the startup time is with failureThreshold * periodSeconds which means in the above case it is 30 * 10 = 300ms.
+
