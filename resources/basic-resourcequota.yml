@@ -8,6 +8,6 @@ spec:
 
 
 
-# kubectl run nginx --image=nginx --restart=Never --namespace=develoment
-# kubectl run tomcat --image=tomcat:8.0 --namespace=development
-# kubectl run -i --tty busybox --image=busybox --restart=Never --namespace=development
+# kubectl run nginx --image=nginx --restart=Never --namespace=pod-demo
+# kubectl run tomcat --image=tomcat:8.0 --namespace=pod-demo
+# kubectl run -i --tty busybox --image=busybox --restart=Never --namespace=pod-demo
