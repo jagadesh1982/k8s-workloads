@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: testing-service
+spec:
+  containers:
+    - name: test-ser
+      image: docker.io/jagadesh1982/bashalpine:latest
+      ports:
+       - containerPort: 9876
+  imagePullSecrets:
+    - name: docker-secret
+    
+    
+ # kubectl create secret docker-registry docker-secret --docker-server https://index.docker.io/v1/ 
+    --docker-email jagadesh.manchala@gmail.com --docker-username=<User Name for Docker Hub> --docker-password <Password For Docker Hub>
