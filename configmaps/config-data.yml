@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: class-data
+data:
+  # property-like keys; each key maps to a simple value
+  attended_students: "3"
+  student_files: "student.properties"
+
+  # file-like keys
+  student.properties: |
+    student.types=good,bad
+    student.lives=5
+  student-interface.properties: |
+    color.good=purple
+    color.bad=yellow
+    allow.textmode=true
