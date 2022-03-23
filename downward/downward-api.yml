@@ -20,3 +20,14 @@ spec:
             fieldRef:
               fieldPath: status.podIP
   restartPolicy: Never
+
+
+
+# Most environment variables in the Kubernetes API use the value field to carry simple values. However, the alternate valueFrom field 
+# allows you to specify a fieldRef to select fields from the pod’s definition. The fieldRef field is a structure that has an apiVersion
+# field and a fieldPath field. The fieldPath field is an expression designating a field of the pod.
+# The apiVersion field is the version of  the API schema that the fieldPath is written in terms of.
+#If the apiVersion field is not specified it is defaulted to the API version of the enclosing object.
+
+# The fieldRef is evaluated and the resulting value is used as the value for the environment variable.
+# This allows users to publish their pod’s name in any environment variable they want.
