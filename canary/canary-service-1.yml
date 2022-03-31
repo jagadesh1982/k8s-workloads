@@ -11,3 +11,5 @@ spec:
     - port: 8888
       targetPort: 80
 
+
+# Once the first version of canary deployment is done. remove the version: "1.0" and save before running the second version of the canary deployment
