@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
- name: nginx
+ name: canary-v1
 spec:
  selector:
   matchLabels:
@@ -13,6 +13,17 @@ spec:
     app: nginx
     version: "1.0"
   spec:
+   initContainers:
+    - name: init
+      image: busybox:latest
+      command:
+        - wget
+        - "-O"
+        - "/work-dir/index.html"
+        - https://raw.githubusercontent.com/jagadesh1982/k8s-workloads/main/canary/index1.html
+      volumeMounts:
+        - mountPath: "/work-dir"
+          name: index
    containers:
     - name: nginx
       image: nginx:alpine
@@ -28,4 +39,5 @@ spec:
    volumes:
     - name: index
       hostPath:
-        path: /Volumes/Working/k8s/v1
+        path: /root/v1
+        type: DirectoryOrCreate
